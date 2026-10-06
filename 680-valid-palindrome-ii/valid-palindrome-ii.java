@@ -1,28 +1,31 @@
 class Solution {
-    public boolean palindromeHelper(int i , int j , String s){
-        while(i<j){
-            if(s.charAt(i)!= s.charAt(j)){
-                return false;
-            }
-            i = i+1;
-            j = j-1;
+ public boolean helperfunction(int i , int j, String s){
+      
+      while(i<j){
+        if(s.charAt(i) != s.charAt(j)){
+            return false;
         }
-        return true;
-    }
+        i++;
+        j--;
+      }
+      return true;
+ }
+
     public boolean validPalindrome(String s) {
-        int i = 0;
+        int i = 0; 
         int j = s.length()-1;
+
         while(i<j){
-            char left = s.charAt(i);
-            char right = s.charAt(j);
+            int left = s.charAt(i);
+            int right = s.charAt(j);
+
             if(left != right){
-                // return helper function
-                return palindromeHelper(i+1,j,s) || palindromeHelper(i,j-1,s);
-            }else{
-                i = i+1;
-                j = j-1;
+                return helperfunction(i+1,j,s) || helperfunction(i,j-1,s);
+
             }
-        } 
+            i++;
+            j--;
+        }
         return true;
         
     }
